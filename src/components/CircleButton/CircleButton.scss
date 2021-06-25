@@ -1,0 +1,35 @@
+@import '../../variables.sass';
+
+.circlebutton {
+    height: 4.5rem;
+    width: 4.5rem;
+    background-color: $color-white;
+    border-radius: 1000rem;
+    z-index: 1000;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+    &__icon {
+        height: 2.2rem;
+        height: 2.2rem;
+    }
+}
+
+.left {
+    margin-right: -2rem;
+}
+
+.right {
+    margin-left: -2rem;
+}
+
+.white {
+    background-color: $color-white;
+}
+
+.black {
+    background-color: $color-black;
+}

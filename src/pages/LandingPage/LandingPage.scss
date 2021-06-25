@@ -1,0 +1,42 @@
+@import '../../variables.sass';
+
+.landingpage {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    &__card {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__img {
+        width: 85%;
+    }
+
+    &__box {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        width: 22.5%;
+        margin-left: 60%;
+    }
+    
+    &__info {
+        margin-top: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        &-header {
+            font-size: 2rem;
+        }
+        &-text {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.swipeview {
+    height: 5rem;
+    background-color: $color-black;
+}

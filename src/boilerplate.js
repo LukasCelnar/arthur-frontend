@@ -3,7 +3,7 @@ import React from 'react';
 // pages
 // components
 // styles
-import 'boilerplate.sass';
+import './boilerplate.scss';
 
 const boilerplate = () => {
     return (
