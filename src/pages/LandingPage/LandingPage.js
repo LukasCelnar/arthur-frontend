@@ -16,9 +16,8 @@ import './LandingPage.scss';
 const LandingPage = () => {
     const [img, setImg] = useState('/images/hard__image0.png');
     const [index, setIndex] = useState(1);
-    const [count, setCount] = useState(0);
-    const [loading, setLoading] = useState(true);
     const [loged, setLoged] = useState(false);
+    const [object, setObject] = useState({});
 
     const checkLogin = () => {
         if (Cookies.get().loged) {
@@ -45,20 +44,35 @@ const LandingPage = () => {
     }
 
     const getCard = () => {
-        setTimeout(() => {
-            setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`)
-        }, 100)
+        backend.get(
+            '/random-object'
+        )
+        .then(response => {
+            setObject(response.data.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     const getNextCard = (e) => {
-        if (count >= 5) {
-            setTimeout(() => {
-                history.replace('/signup'); 
-            }, 700) 
-        }
+        backend.get(
+            '/random-object'
+        )
+        .then(response => {
+            setObject(response.data.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
 
         setIndex(e);
-        setCount(count+1);
+        if (e === 0) {
+            console.log('swipe to right')
+        } else {
+            console.log('swipe to left')
+        }
+       
         setTimeout(() => {
             setIndex(1);
             setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`);
@@ -68,9 +82,6 @@ const LandingPage = () => {
     useEffect(() => {
         checkLogin();
         getCard();
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
     }, []);
 
     const swapingComponent = () => {
@@ -82,7 +93,7 @@ const LandingPage = () => {
                     
                 </div>
                 <div className='landingpage__card'>
-                    <img className='landingpage__img' src={img} />     
+                    <img className='landingpage__img' alt='object' src={object.filePath} />     
                 </div>
                 <div>
 
@@ -108,12 +119,9 @@ const LandingPage = () => {
                     <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/user.svg'} />
                 </div>
                 <div className='landingpage__info'>
-                    <h2 className='landingpage__info-header'>Jméno nějaké té pičoviny</h2>
-                    <p className='landingpage__info-text'>Text über der Scheisereien aus das Museum von diesen Bratwurstesser. 
-                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
-                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
-                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
-                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
+                    <h2 className='landingpage__info-header'>{object.title}</h2>
+                    <p className='landingpage__info-text'>
+                        {object.description}
                     </p>
                 </div>
                 

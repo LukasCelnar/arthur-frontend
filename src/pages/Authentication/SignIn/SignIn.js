@@ -85,7 +85,7 @@ const SignIn = () => {
                     <Input type={'password'} placeholder={'Passwort'} setState={setPassword} state={password} />
                     <SubmitButton text={'Sign Ip'} />
                 </form>
-                <Link className='authentication__link' to="/signup">
+                <Link className='authentication__link' to="/">
                     <h4>Noch nicht registriert?</h4>
                 </Link>
                 <h3 className='authentication__err'>{err}</h3>

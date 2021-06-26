@@ -1,6 +1,54 @@
 @import '../../variables.scss';
 
 .landingpage {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+    
+        &__card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+        }
+    
+        &__img {
+            width: 75%;
+        }
+    
+        &__box {
+            margin-top: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            height: auto;
+            margin-left: 55%;
+        }
+        
+        &__info {
+            margin-top: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            &-header {
+                font-size: 1.8rem;
+            }
+            &-text {
+                margin-top: 1rem;
+                font-size: 1rem;
+            }
+        }
+    
+        &__swiper {
+            position: relative;
+        }
+    }
+
+
+
+@media (min-width: 350px) {
+    .landingpage {
     margin-top: 2rem;
     margin-bottom: 2rem;
     
@@ -10,10 +58,12 @@
         justify-content: space-around;
         align-items: center;
         position: relative;
+        height: 60vh;
+        overflow: hidden;
     }
 
     &__img {
-        width: 85%;
+        width: 80%;
     }
 
     &__box {
@@ -40,5 +90,107 @@
 
     &__swiper {
         position: relative;
+    }
+    }
+}
+
+@media (min-width: 800px) {
+    .landingpage {
+        &__img {
+            width: 65%;
+        }
+    
+        &__box {
+            justify-content: flex-end;
+        }
+    }
+
+}
+
+@media (min-width: 1300px) {
+    .landingpage {
+        width: 100vh;
+        margin: 0 auto;
+    
+        &__card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+        }
+    
+        &__img {
+            width: 40%;
+        }
+    
+        &__box {
+            display: flex;
+            justify-content: flex-end;
+            width: 30%;
+            height: 100%;
+            margin: 3.5rem 5rem 0 auto;
+        }
+        
+        &__info {
+            margin: 0 auto;
+            width: 80%;
+            &-header {
+                font-size: 2.5rem;
+            }
+            &-text {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+            }
+        }
+    
+        &__swiper {
+            position: relative;
+        }
+    }
+}
+
+@media (min-width: 2048px) {
+    .landingpage {
+        width: 100vh;
+        margin: 0 auto;
+    
+        &__card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+        }
+    
+        &__img {
+            width: 40%;
+        }
+    
+        &__box {
+            display: flex;
+            justify-content: flex-end;
+            width: 30%;
+            height: 100%;
+            margin: 3.5rem auto 0 auto;
+        }
+        
+        &__info {
+            margin: 0 auto;
+            width: 80%;
+            &-header {
+                font-size: 3rem;
+            }
+            &-text {
+                margin-top: 1rem;
+                font-size: 2rem;
+            }
+        }
+    
+        &__swiper {
+            position: relative;
+        }
     }
 }

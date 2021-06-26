@@ -32,4 +32,20 @@
         font-size: 1.2rem;
         color: $color-black;
     }
+
+    &__radio {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    &__radio > input {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    &__radio > h4 {
+        font-size: 1.2rem;
+    }
 }
