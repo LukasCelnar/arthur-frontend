@@ -1,0 +1,56 @@
+@import '../../variables.sass';
+
+.loadingpage {
+    height: 100vh;
+    animation-duration: 3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__header {
+        font-size: 4rem;
+        text-transform: uppercase;
+        opacity: 1;
+        text-align: center;
+    }
+}
+
+.progress{
+    width: 80%;
+    height: 2rem;
+    border: 2px solid $color-black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $color-white;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    margin: 0 auto 0 auto;
+}
+.progress .color{
+    background-color: $color-black;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 3s infinite linear;    
+}
+
+@keyframes progres{
+    0%{
+      width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+};

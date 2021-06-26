@@ -3,11 +3,13 @@
 .landingpage {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    
 
     &__card {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        position: relative;
     }
 
     &__img {
@@ -15,11 +17,12 @@
     }
 
     &__box {
-        margin-top: 1rem;
+        margin-top: 3.5rem;
         display: flex;
         justify-content: space-between;
-        width: 22.5%;
-        margin-left: 60%;
+        width: 30%;
+        height: 100%;
+        margin-left: 55%;
     }
     
     &__info {
@@ -34,9 +37,8 @@
             font-size: 1.2rem;
         }
     }
-}
 
-.swipeview {
-    height: 5rem;
-    background-color: $color-black;
+    &__swiper {
+        position: relative;
+    }
 }

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 // third party 
 import SwipableViews from 'react-swipeable-views'; 
 // pages
+import LoadingPage from '../LoadingPage/LoadingPage';
 // components
 import CircleButton from '../../components/CircleButton/CircleButton';
+import history from '../../history';
 // styles
 import './LandingPage.scss';
 
@@ -20,49 +22,84 @@ const style = {
     },
 }
 
-
-
-
 const LandingPage = () => {
     const [img, setImg] = useState('/images/hard__image0.png');
+    const [index, setIndex] = useState(1);
+    const [count, setCount] = useState(0);
+    const [loading, setLoading] = useState(true);
 
-    const getNextCard = () => {
+    const getCard = () => {
         setTimeout(() => {
             setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`)
         }, 100)
     }
 
+    const getNextCard = (e) => {
+        if (count >= 5) {
+            setTimeout(() => {
+                history.replace('/signup'); 
+            }, 500) 
+        }
 
-    return (
-        <div className='landingpage'>
-            <SwipableViews enableMouseEvents index={1} onTransitionEnd={getNextCard}>
+        setIndex(e);
+        setCount(count+1);
+        setTimeout(() => {
+            setIndex(1);
+            setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`)
+        }, 500)
+    }
+
+    useEffect(() => {
+        getCard()
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000)
+    }, [])
+
+    const swapingComponent = () => {
+        return (
+            <div className='landingpage__swiper'>
+            <CircleButton positionFixed={true} color={'white'} side={'left'} img={'/images/icons/block.svg'} />
+            <SwipableViews enableMouseEvents index={index} onChangeIndex={(e) => getNextCard(e)}>
                 <div>
-                    DEC
+                    
                 </div>
                 <div className='landingpage__card'>
-                    <CircleButton color={'white'} side={'left'} img={'/images/icons/block.svg'} />
-                    <img className='landingpage__img' src={img} />
-                    <CircleButton color={'white'} side={'right'} img={'/images/icons/heart.svg'} />
+                    <img className='landingpage__img' src={img} />     
                 </div>
                 <div>
-                    ACC
+
                 </div>
             </SwipableViews>
-            <div className='landingpage__box'>
-                <CircleButton color={'black'} side={'left'} img={'/images/icons/pen.svg'} />
-                <CircleButton color={'black'} side={'left'} img={'/images/icons/user.svg'} />
+            <CircleButton positionFixed={true} color={'white'} side={'right'} img={'/images/icons/heart.svg'} />
             </div>
-            <div className='landingpage__info'>
-                <h2 className='landingpage__info-header'>Jméno nějaké té pičoviny</h2>
-                <p className='landingpage__info-text'>Text o té sračce z muzea od těch klobásožroutů. Text o té sračce z muzea od těch klobásožroutů.
-                Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
-                Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
-                Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
-                </p>
+        )
+    }
+
+    if (loading) {
+        return <LoadingPage />
+    } else {
+        return (
+            <div className='landingpage'>
+                    
+                    {swapingComponent()}
+                    
+                <div className='landingpage__box'>
+                    <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/pen.svg'} />
+                    <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/user.svg'} />
+                </div>
+                <div className='landingpage__info'>
+                    <h2 className='landingpage__info-header'>Jméno nějaké té pičoviny</h2>
+                    <p className='landingpage__info-text'>Text o té sračce z muzea od těch klobásožroutů. Text o té sračce z muzea od těch klobásožroutů.
+                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
+                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
+                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
+                    </p>
+                </div>
+                
             </div>
-            
-        </div>
-    );
+        );
+    }
 };
 
 export default LandingPage;

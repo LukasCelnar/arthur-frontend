@@ -16,14 +16,25 @@
         height: 2.2rem;
         height: 2.2rem;
     }
+
+    &__fixed {
+        position: absolute;
+    }
+
+    &__relative {
+        position: relative;
+    }
 }
 
 .left {
-    margin-right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .right {
-    margin-left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
 }
 
 .white {
