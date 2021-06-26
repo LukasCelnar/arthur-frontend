@@ -1,0 +1,19 @@
+@import '../../../variables.scss';
+
+.account {
+    &__user {
+        height: 10rem;
+        width: 10rem;
+        background-color: $color-black;
+        border-radius: 1000rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5rem auto 0 auto;
+    }
+
+    &__icon {
+        height: 6rem;
+        width: 6rem;
+    }
+}

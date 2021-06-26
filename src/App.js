@@ -3,7 +3,9 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 // pages
 import LandingPage from './pages/LandingPage/LandingPage';
-import SignUp from './pages/SignUp/SignUp';
+import SignUp from './pages/Authentication/SignUp/SignUp';
+import SignIn from './pages/Authentication/SignIn/SignIn';
+import Account from './pages/Authentication/Account/Account';
 import NotFound from './pages/NotFound/NotFound';
 // components
 import history from './history';
@@ -17,8 +19,10 @@ const App = () => {
             <Router history={history}>
                 <div>
                     <Switch> 
-                        <Route path='/' exact component={LandingPage} />
-                        <Route path='/signup' exact component={SignUp} />
+                        <Route path='/landingpage' exact component={LandingPage} />
+                        <Route path='/' exact component={SignUp} />
+                        <Route path='/signin' exact component={SignIn} />
+                        <Route path='/account' exact component={Account} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>

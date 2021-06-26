@@ -5,9 +5,9 @@ import React from 'react';
 // styles
 import './Input.scss';
 
-const Input = () => {
+const Input = ({ type, placeholder, state, setState }) => {
     return (
-        <input className='input' />
+        <input type={type} placeholder={placeholder} onChange={(e) => setState(e.target.value)} className='input' value={state} />
     );
 };
 

@@ -1,32 +1,48 @@
 import React, { useEffect, useState } from 'react';
 // third party 
 import SwipableViews from 'react-swipeable-views'; 
+import Cookies from 'js-cookie';
 // pages
 import LoadingPage from '../LoadingPage/LoadingPage';
+import NotFound from '../NotFound/NotFound';
 // components
 import CircleButton from '../../components/CircleButton/CircleButton';
 import history from '../../history';
+import backend from '../../api/backend';
 // styles
 import './LandingPage.scss';
 
-const style = {
-    slide1: {
-        backgroundColor: '#000',
-        fontSize: 20,
-        minHeight: 50,
-    },
-    slide2: {
-        backgroundColor: '#aa4587',
-        fontSize: 20,
-        minHeight: 50,
-    },
-}
 
 const LandingPage = () => {
     const [img, setImg] = useState('/images/hard__image0.png');
     const [index, setIndex] = useState(1);
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [loged, setLoged] = useState(false);
+
+    const checkLogin = () => {
+        if (Cookies.get().loged) {
+            const { id, time, hash } = JSON.parse(Cookies.get().loged);
+            backend.post(
+                '/checklogin',
+                {
+                    data: {
+                        id,
+                        time,
+                        hash,
+                    }
+                }
+            )
+            .then(response => {
+                setLoged(response.data.loged);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        } else {
+            setLoged(false);
+        }
+    }
 
     const getCard = () => {
         setTimeout(() => {
@@ -38,29 +54,30 @@ const LandingPage = () => {
         if (count >= 5) {
             setTimeout(() => {
                 history.replace('/signup'); 
-            }, 500) 
+            }, 700) 
         }
 
         setIndex(e);
         setCount(count+1);
         setTimeout(() => {
             setIndex(1);
-            setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`)
+            setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`);
         }, 500)
     }
 
     useEffect(() => {
-        getCard()
+        checkLogin();
+        getCard();
         setTimeout(() => {
             setLoading(false);
-        }, 3000)
-    }, [])
+        }, 3000);
+    }, []);
 
     const swapingComponent = () => {
         return (
             <div className='landingpage__swiper'>
             <CircleButton positionFixed={true} color={'white'} side={'left'} img={'/images/icons/block.svg'} />
-            <SwipableViews enableMouseEvents index={index} onChangeIndex={(e) => getNextCard(e)}>
+            <SwipableViews hysteresis={0.7} resistance={true} enableMouseEvents index={index} onChangeIndex={(e) => getNextCard(e)}>
                 <div>
                     
                 </div>
@@ -76,8 +93,10 @@ const LandingPage = () => {
         )
     }
 
-    if (loading) {
+    if (loged === null) {
         return <LoadingPage />
+    } else if (!loged) {
+        return <NotFound />
     } else {
         return (
             <div className='landingpage'>
@@ -90,10 +109,11 @@ const LandingPage = () => {
                 </div>
                 <div className='landingpage__info'>
                     <h2 className='landingpage__info-header'>Jméno nějaké té pičoviny</h2>
-                    <p className='landingpage__info-text'>Text o té sračce z muzea od těch klobásožroutů. Text o té sračce z muzea od těch klobásožroutů.
-                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
-                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
-                    Text o té sračce z muzea od těch klobásožroutů.Text o té sračce z muzea od těch klobásožroutů.
+                    <p className='landingpage__info-text'>Text über der Scheisereien aus das Museum von diesen Bratwurstesser. 
+                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
+                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
+                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
+                    Text über der Scheisereien aus das Museum von diesen Bratwurstesser.
                     </p>
                 </div>
                 

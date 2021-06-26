@@ -8,9 +8,9 @@ import './LoadingPage.scss';
 const LoadingPage = () => {
     return (
         <div className='loadingpage'>
-            <h1 className='loadingpage__header'>welcome</h1>
-            <div class="progress">
-                <div class="color"></div>
+            <h1 className='loadingpage__header'>Willkommen</h1>
+            <div className="progress">
+                <div className="color"></div>
             </div>
         </div>
     );

@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.authentication {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__header {
+        font-size: 3rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid $color-black;
+    }
+
+    &__err {
+        font-size: 1.5rem;
+        height: 2rem;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    &__link {
+        font-size: 1.2rem;
+        color: $color-black;
+    }
+}
