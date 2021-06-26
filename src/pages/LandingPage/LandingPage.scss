@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.landingpage {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+
+    &__card {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+    }
+
+    &__img {
+        width: 85%;
+    }
+
+    &__box {
+        margin-top: 3.5rem;
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+        height: 100%;
+        margin-left: 55%;
+    }
+    
+    &__info {
+        margin-top: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        &-header {
+            font-size: 2rem;
+        }
+        &-text {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__swiper {
+        position: relative;
+    }
+}

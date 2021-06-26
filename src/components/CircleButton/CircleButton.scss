@@ -1,0 +1,46 @@
+@import '../../variables.scss';
+
+.circlebutton {
+    height: 4.5rem;
+    width: 4.5rem;
+    background-color: $color-white;
+    border-radius: 1000rem;
+    z-index: 1000;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+    &__icon {
+        height: 2.2rem;
+        height: 2.2rem;
+    }
+
+    &__fixed {
+        position: absolute;
+    }
+
+    &__relative {
+        position: relative;
+    }
+}
+
+.left {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.white {
+    background-color: $color-white;
+}
+
+.black {
+    background-color: $color-black;
+}

@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.submitbutton {
+    height: 4.5rem;
+    width: 16rem;
+    background-color: $color-black;
+    color: $color-white;
+    outline: none;
+    border: none;
+    border-radius: 1000rem;
+    font-size: 2.2rem;
+    margin: 1rem;
+}
