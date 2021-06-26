@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     border: none;
+    margin: 5px;
 
     &__icon {
         height: 2.2rem;
@@ -43,4 +44,34 @@
 
 .black {
     background-color: $color-black;
+}
+
+@media (min-width: 2048px) {
+    .circlebutton {
+        height: 9rem;
+        width: 9rem;
+        background-color: $color-white;
+        border-radius: 1000rem;
+        z-index: 1000;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        margin: 5px;
+    
+        &__icon {
+            height: 4.4rem;
+            height: 4.4rem;
+        }
+    
+        &__fixed {
+            position: absolute;
+        }
+    
+        &__relative {
+            position: relative;
+        }
+    }
+
 }
