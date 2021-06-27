@@ -122,7 +122,7 @@ const LandingPage = () => {
                     <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/user.svg'} />
                 </div>
                     {swapingComponent()}
-                    {dataIndex > 5 ? <MatchModal data={swipes} /> : null}
+                    {dataIndex > 10 ? <MatchModal data={swipes} /> : null}
                     
                 <div className='landingpage__info'>
                     <h2 className='landingpage__info-header'>{object.title}</h2>

@@ -12,8 +12,8 @@ const MatchModal = ({data}) => {
     }
 
     useEffect(() => {
-        backend.post('/create-swipes', { swipes: data })
-            .then(res => console.log(res.data.id))
+        backend.post('/create-match', { swipes: data })
+            .then(res => console.log(res.data))
             .catch(err => console.log(err))
     }, [])
 
