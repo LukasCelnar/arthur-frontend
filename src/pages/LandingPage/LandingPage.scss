@@ -21,7 +21,7 @@
         &__box {
             margin-top: 3.5rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 40%;
             height: auto;
             margin-left: 55%;
@@ -69,8 +69,8 @@
     &__box {
         margin-top: 3.5rem;
         display: flex;
-        justify-content: space-between;
-        width: 30%;
+        justify-content: flex-end;
+        width: 40%;
         height: 100%;
         margin-left: 55%;
     }
@@ -128,9 +128,9 @@
         &__box {
             display: flex;
             justify-content: flex-end;
-            width: 30%;
+            width: 40%;
             height: 100%;
-            margin: 3.5rem 5rem 0 auto;
+            margin: 3.5rem 0 0 auto;
         }
         
         &__info {
@@ -172,9 +172,9 @@
         &__box {
             display: flex;
             justify-content: flex-end;
-            width: 30%;
+            width: 40%;
             height: 100%;
-            margin: 3.5rem auto 0 auto;
+            margin: 3.5rem 0 0 auto;
         }
         
         &__info {

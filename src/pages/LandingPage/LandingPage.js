@@ -9,6 +9,7 @@ import NotFound from '../NotFound/NotFound';
 import CircleButton from '../../components/CircleButton/CircleButton';
 import history from '../../history';
 import backend from '../../api/backend';
+import MatchModal from '../../components/MatchModal/MatchModal';
 // styles
 import './LandingPage.scss';
 
@@ -18,7 +19,12 @@ const LandingPage = () => {
     const [index, setIndex] = useState(1);
     const [loged, setLoged] = useState(false);
     const [object, setObject] = useState({});
+    const [dataIndex, setDataIndex] = useState(0)
+    const [swipes, setSwipes] = useState([])
 
+    console.log(dataIndex)
+
+    /*
     const checkLogin = () => {
         if (Cookies.get().loged) {
             const { id, time, hash } = JSON.parse(Cookies.get().loged);
@@ -42,13 +48,16 @@ const LandingPage = () => {
             setLoged(false);
         }
     }
+    */
 
     const getCard = () => {
-        backend.get(
-            '/random-object'
+        backend.post(
+            '/random-object',
+            {dataIndex}
         )
         .then(response => {
             setObject(response.data.data);
+            setDataIndex(dataIndex + 1)
         })
         .catch(err => {
             console.log(err);
@@ -56,8 +65,9 @@ const LandingPage = () => {
     }
 
     const getNextCard = (e) => {
-        backend.get(
-            '/random-object'
+        backend.post(
+            '/random-object',
+            {dataIndex}
         )
         .then(response => {
             setObject(response.data.data);
@@ -69,18 +79,21 @@ const LandingPage = () => {
         setIndex(e);
         if (e === 0) {
             console.log('swipe to right')
+            setDataIndex(dataIndex + 1)
+            setSwipes([...swipes, 1])
         } else {
             console.log('swipe to left')
+            setDataIndex(dataIndex + 1)
+            setSwipes([...swipes, 0])
         }
        
         setTimeout(() => {
             setIndex(1);
-            setImg(`/images/hard__image${Math.floor(Math.random() * 3)}.png`);
         }, 500)
     }
 
     useEffect(() => {
-        checkLogin();
+        //checkLogin();
         getCard();
     }, []);
 
@@ -103,21 +116,14 @@ const LandingPage = () => {
             </div>
         )
     }
-
-    if (loged === null) {
-        return <LoadingPage />
-    } else if (!loged) {
-        return <NotFound />
-    } else {
         return (
             <div className='landingpage'>
-                    
-                    {swapingComponent()}
-                    
                 <div className='landingpage__box'>
-                    <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/pen.svg'} />
                     <CircleButton positionFixed={false} color={'black'} side={'left'} img={'/images/icons/user.svg'} />
                 </div>
+                    {swapingComponent()}
+                    {dataIndex > 5 ? <MatchModal data={swipes} /> : null}
+                    
                 <div className='landingpage__info'>
                     <h2 className='landingpage__info-header'>{object.title}</h2>
                     <p className='landingpage__info-text'>
@@ -127,7 +133,6 @@ const LandingPage = () => {
                 
             </div>
         );
-    }
 };
 
 export default LandingPage;
